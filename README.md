@@ -25,29 +25,69 @@ Repositori ini terdiri dari tiga bagian utama:
 - **Message Broker**: RabbitMQ
 - **Authentication**: JSON Web Token (JWT)
 
-## ⚙️ Cara Menjalankan
+## ⚙️ Konfigurasi Environment
 
-### Prasyarat
-Pastikan Anda sudah menginstal:
-- Node.js (v16 atau terbaru)
-- PostgreSQL
-- Redis
-- RabbitMQ
+Sebelum menjalankan aplikasi, pastikan Anda telah membuat file `.env` di masing-masing direktori layanan.
+
+### 1. Backend (`openjob_api`)
+Buat file `.env` di folder `openjob_api/`:
+```env
+# Database
+PGUSER=postgres
+PGHOST=localhost
+PGPASSWORD=password_anda
+PGDATABASE=openjob
+PGPORT=5432
+
+# Authentication
+ACCESS_TOKEN_KEY=rahasia_token_akses
+REFRESH_TOKEN_KEY=rahasia_token_refresh
+TOKEN_AGE=3600
+
+# RabbitMQ
+RABBITMQ_SERVER=amqp://localhost
+
+# Redis
+REDIS_SERVER=localhost
+```
+
+### 2. Consumer (`openjob_consumer`)
+Buat file `.env` di folder `openjob_consumer/`:
+```env
+# RabbitMQ
+RABBITMQ_SERVER=amqp://localhost
+
+# Mail Service (Gunakan Mailtrap atau Gmail App Password)
+MAIL_ADDRESS=email_anda@gmail.com
+MAIL_PASSWORD=password_aplikasi_anda
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+```
+
+### 3. Frontend (`openjob_web`)
+Buat file `.env` di folder `openjob_web/`:
+```env
+# API URL (Tanpa akhiran garis miring)
+VITE_API_URL=http://localhost:3000
+```
+
+---
+
+## 🛠️ Cara Menjalankan
 
 ### 1. Setup Backend (API)
 ```bash
 cd openjob_api
 npm install
-# Salin .env.example ke .env dan sesuaikan konfigurasinya
 npm run migrate up
-npm run start
+npm run dev
 ```
 
 ### 2. Setup Consumer
 ```bash
 cd openjob_consumer
 npm install
-npm start
+npm run dev
 ```
 
 ### 3. Setup Frontend
@@ -58,4 +98,4 @@ npm run dev
 ```
 
 ## 📝 Lisensi
-Proyek ini dibuat untuk tujuan pembelajaran dan submisi tugas jangan lasung mengumpul file ini karena akan terkena plagiarisme, jadikan sebagai pembelajaran untuk project anda.
+Proyek ini dibuat untuk tujuan pembelajaran. Harap jadikan sebagai referensi dan jangan langsung mengumpulkan file ini untuk menghindari plagiarisme.
