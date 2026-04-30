@@ -1,0 +1,128 @@
+@import "primereact/resources/themes/lara-light-indigo/theme.css";
+@import "primereact/resources/primereact.min.css";
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Custom PrimeReact Overrides with Tailwind */
+.p-button {
+  @apply rounded-2xl font-black transition-all duration-300 shadow-sm hover:shadow-xl active:scale-95 px-8 py-4 !important;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.p-button.p-button-sm {
+  @apply px-4 py-2 text-xs !important;
+}
+
+.p-button.p-button-lg {
+  @apply px-10 py-5 text-xl !important;
+}
+
+.p-button.p-button-raised, .p-button:not(.p-button-text):not(.p-button-outlined) {
+  @apply bg-primary-600 border-none hover:bg-primary-700 shadow-lg shadow-slate-200 !important;
+  color: white !important;
+}
+
+.p-button.p-button-raised .p-button-label, .p-button:not(.p-button-text):not(.p-button-outlined) .p-button-label {
+  color: white !important;
+}
+
+.p-button-text {
+  @apply px-4 py-2 !important;
+}
+
+.p-inputtext {
+  @apply rounded-xl border-slate-200 bg-slate-50/50 px-4 py-3 text-slate-700 transition-all duration-200 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10;
+}
+
+.p-dropdown {
+  @apply rounded-xl border-slate-200 bg-slate-50/50 transition-all duration-200 focus:ring-4 focus:ring-primary-500/10;
+}
+
+.p-dropdown .p-dropdown-label {
+  @apply px-4 py-3;
+}
+
+.p-dropdown-panel {
+  @apply rounded-xl border border-slate-100 shadow-xl overflow-hidden;
+  z-index: 9999 !important;
+}
+
+.p-dropdown-items {
+  @apply p-2;
+}
+
+.p-dropdown-item {
+  @apply rounded-lg py-2 px-3 text-slate-600 transition-colors hover:bg-primary-50 hover:text-primary-600;
+}
+
+.p-card {
+  @apply rounded-[2rem] shadow-sm border border-slate-100 bg-white/80 backdrop-blur-sm;
+}
+
+.p-card .p-card-body {
+  @apply p-8;
+}
+
+.p-card .p-card-content {
+  @apply p-0;
+}
+
+.p-dialog {
+  @apply rounded-[2.5rem] overflow-hidden border-none shadow-2xl;
+}
+
+.p-dialog .p-dialog-header {
+  @apply p-8 pb-4 bg-white border-none;
+}
+
+.p-dialog .p-dialog-content {
+  @apply p-8 pt-2 bg-white border-none;
+}
+
+.p-dialog .p-dialog-footer {
+  @apply p-8 pt-4 bg-white border-none flex gap-3;
+}
+
+.p-tabview-nav {
+  @apply border-b border-slate-100 mb-6 flex gap-4;
+}
+
+.p-tabview-nav li {
+  @apply mr-0;
+}
+
+.p-tabview-nav li .p-tabview-nav-link {
+  @apply border-none bg-transparent py-4 px-2 text-slate-400 font-bold transition-all duration-200;
+}
+
+.p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  @apply text-primary-600 border-b-2 border-primary-600;
+}
+
+/* Custom Glassmorphism */
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.dark-glass {
+  @apply bg-slate-900/80 backdrop-blur-xl border border-white/10;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "openjob-consumer",
+  "version": "1.0.0",
+  "description": "RabbitMQ Consumer for OpenJob",
+  "main": "consumer.js",
+  "scripts": {
+    "start": "node consumer.js"
+  },
+  "dependencies": {
+    "amqplib": "^1.0.3",
+    "dotenv": "^17.4.2"
+  }
+}
