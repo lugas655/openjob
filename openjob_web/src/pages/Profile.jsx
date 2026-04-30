@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { profileApi, documentsApi, usersApi, api } from '../api';
 import { Button } from 'primereact/button';
@@ -9,7 +10,7 @@ import { Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
-import { User, FileText, Briefcase, Bookmark, Upload, Trash2, ExternalLink, Calendar, MapPin, Pencil } from 'lucide-react';
+import { User, FileText, Briefcase, Bookmark, Upload, Trash2, ExternalLink, Calendar, MapPin, Pencil, ShieldCheck, ArrowRight, Building, Mail, MessageSquare } from 'lucide-react';
 
 const Profile = () => {
   const { user, fetchUserProfile } = useAuth();

@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import Jobs from './pages/Jobs'
 import JobDetail from './pages/JobDetail'
@@ -31,11 +32,7 @@ function App() {
             <Route path="/manage/categories" element={<ManageCategories />} />
           </Routes>
         </main>
-        <footer className="bg-slate-900 text-white py-12">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-slate-400">&copy; 2026 OpenJob. All rights reserved.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </AuthProvider>
   )

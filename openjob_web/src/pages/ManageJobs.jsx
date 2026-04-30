@@ -10,7 +10,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { Toast } from 'primereact/toast';
-import { Briefcase, Plus, Pencil, Trash2, Tag, Building, DollarSign, Users } from 'lucide-react';
+import { Briefcase, Plus, Pencil, Trash2, Tag, Building, DollarSign, Users, TrendingUp } from 'lucide-react';
 
 const ManageJobs = () => {
   const [jobs, setJobs] = useState([]);

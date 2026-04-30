@@ -100,140 +100,145 @@ const JobDetail = () => {
   );
 
   return (
-    <div className="bg-slate-50 min-h-screen py-12">
+    <div className="bg-mesh min-h-screen py-16">
       <div className="container mx-auto px-4">
         {/* Breadcrumb */}
-        <Link to="/jobs" className="inline-flex items-center text-slate-500 hover:text-primary-600 mb-8 transition-colors">
-          <ChevronLeft className="w-4 h-4 mr-1" />
-          Back to all jobs
+        <Link to="/jobs" className="inline-flex items-center text-slate-400 hover:text-primary-600 mb-12 transition-all font-black uppercase tracking-widest text-[10px]">
+          <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center mr-3 group">
+            <ChevronLeft className="w-4 h-4" />
+          </div>
+          Back to all opportunities
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
-                <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-400">
-                    <Building className="w-10 h-10" />
+          <div className="lg:col-span-2 space-y-12">
+            <div className="glass rounded-[3rem] p-10 md:p-16 border-white/60 shadow-2xl shadow-primary-500/5">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+                <div className="flex items-center gap-8">
+                  <div className="w-24 h-24 bg-white shadow-2xl shadow-slate-200/50 rounded-3xl flex items-center justify-center text-slate-400 shrink-0">
+                    <Building className="w-12 h-12" />
                   </div>
                   <div>
-                    <h1 className="text-3xl font-bold text-slate-900 mb-2">{job.title}</h1>
-                    <div className="flex flex-wrap items-center gap-4 text-slate-500">
-                      <span className="flex items-center"><Building className="w-4 h-4 mr-1" /> {job.company_name || 'Top Company'}</span>
-                      <span className="flex items-center"><MapPin className="w-4 h-4 mr-1" /> {job.location || 'Remote'}</span>
+                    <div className="flex items-center gap-3 mb-3">
+                       <span className="px-3 py-1 rounded-full bg-primary-50 text-primary-600 text-[10px] font-black uppercase tracking-widest border border-primary-100/50">{job.type || 'Full Time'}</span>
+                       <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">{job.category_name}</span>
                     </div>
+                    <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none">{job.title}</h1>
+                    <p className="mt-4 text-lg font-bold text-slate-500">{job.company_name || 'Innovate Corp'}</p>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <Button 
                     icon={<Bookmark className={`w-5 h-5 ${isBookmarked ? 'fill-primary-600 text-primary-600' : 'text-slate-400'}`} />} 
-                    className="p-button-outlined border-slate-200" 
+                    className="p-button-text p-button-rounded bg-white shadow-sm border border-slate-100 w-14 h-14" 
                     onClick={toggleBookmark}
                   />
-                  <Button icon={<Share2 className="w-5 h-5 text-slate-400" />} className="p-button-outlined border-slate-200" />
+                  <Button icon={<Share2 className="w-5 h-5 text-slate-400" />} className="p-button-text p-button-rounded bg-white shadow-sm border border-slate-100 w-14 h-14" />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-y border-slate-100 mb-10">
-                <div className="space-y-1">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Salary</p>
-                  <p className="font-bold text-slate-900">{job.salary ? `$${job.salary.toLocaleString()}` : 'Negotiable'}</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-slate-100/60 mb-12">
+                <div className="space-y-2">
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Salary</p>
+                  <p className="text-xl font-black text-slate-900">{job.salary ? `$${(job.salary/1000).toFixed(0)}k` : 'Neg.'}</p>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Job Type</p>
-                  <p className="font-bold text-slate-900">{job.type || 'Full Time'}</p>
+                <div className="space-y-2">
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Location</p>
+                  <p className="text-xl font-black text-slate-900">{job.location || 'Remote'}</p>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Category</p>
-                  <p className="font-bold text-slate-900">{job.category_name || 'General'}</p>
+                <div className="space-y-2">
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Experience</p>
+                  <p className="text-xl font-black text-slate-900">2-4 Yrs</p>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Posted Date</p>
-                  <p className="font-bold text-slate-900">{new Date(job.created_at).toLocaleDateString()}</p>
+                <div className="space-y-2">
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Posted</p>
+                  <p className="text-xl font-black text-slate-900">{new Date(job.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
                 </div>
               </div>
 
               <div className="prose prose-slate max-w-none">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Job Description</h3>
-                <div className="text-slate-600 leading-relaxed space-y-4 whitespace-pre-line">
+                <h3 className="text-2xl font-black text-slate-900 mb-6 tracking-tight">Job Overview</h3>
+                <div className="text-slate-500 text-lg leading-relaxed space-y-6 whitespace-pre-line font-medium">
                   {job.description}
                 </div>
               </div>
             </div>
 
-            {/* Related Jobs / Company Info */}
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">About the Company</h3>
-              <div className="flex items-center gap-6 mb-6">
-                <div className="w-16 h-16 bg-slate-50 rounded-xl flex items-center justify-center text-slate-300">
+            {/* Company Info */}
+            <div className="glass rounded-[3rem] p-10 md:p-16 border-white/60 shadow-xl shadow-slate-200/20 relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-64 h-64 bg-primary-600/5 blur-[80px] -mr-32 -mt-32"></div>
+              <h3 className="text-2xl font-black text-slate-900 mb-8 tracking-tight">The Company</h3>
+              <div className="flex items-center gap-6 mb-8">
+                <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center text-white shrink-0">
                   <Building className="w-8 h-8" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">{job.company_name || 'Top Company'}</h4>
-                  <p className="text-slate-500 text-sm">Technology & Software Services</p>
+                  <h4 className="text-xl font-black text-slate-900">{job.company_name || 'Innovate Corp'}</h4>
+                  <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] mt-1">{job.location || 'San Francisco, CA'}</p>
                 </div>
               </div>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                {job.company_description || "This is a leading company in their industry, committed to innovation and excellence. Join their dynamic team to work on cutting-edge projects and grow your professional career."}
+              <p className="text-slate-500 text-lg leading-relaxed mb-8 font-medium">
+                {job.company_description || "We are a mission-driven organization focused on building the next generation of digital experiences. Our team is composed of passionate individuals who value innovation, transparency, and impact."}
               </p>
-              <Button label="View Company Profile" className="p-button-text font-bold text-primary-600 p-0" />
+              <Button label="Explore Company" className="p-button-text font-black text-primary-600 uppercase tracking-widest text-xs" icon="pi pi-external-link" iconPos="right" />
             </div>
           </div>
 
           {/* Sidebar / Apply Card */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24 bg-white p-8 rounded-3xl shadow-lg shadow-primary-100 border border-slate-100 space-y-6">
-              <div className="text-center pb-6 border-b border-slate-100">
-                <p className="text-slate-500 mb-1">Application ends in</p>
-                <div className="flex justify-center gap-4 text-slate-900">
+            <div className="sticky top-32 bg-slate-900 p-10 rounded-[3rem] shadow-2xl shadow-primary-900/40 space-y-10 border border-white/10 text-white">
+              <div className="text-center pb-10 border-b border-white/10">
+                <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-6">Application Deadline</p>
+                <div className="flex justify-center gap-6">
                   <div className="text-center">
-                    <span className="block text-2xl font-bold">12</span>
-                    <span className="text-xs font-bold text-slate-400 uppercase">Days</span>
+                    <span className="block text-4xl font-black mb-1">12</span>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Days</span>
                   </div>
-                  <div className="text-2xl font-bold text-slate-300">:</div>
                   <div className="text-center">
-                    <span className="block text-2xl font-bold">08</span>
-                    <span className="text-xs font-bold text-slate-400 uppercase">Hrs</span>
+                    <span className="block text-4xl font-black mb-1">08</span>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Hrs</span>
                   </div>
-                  <div className="text-2xl font-bold text-slate-300">:</div>
                   <div className="text-center">
-                    <span className="block text-2xl font-bold">45</span>
-                    <span className="text-xs font-bold text-slate-400 uppercase">Min</span>
+                    <span className="block text-4xl font-black mb-1">45</span>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Min</span>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <Button 
-                  label="Apply for Job" 
-                  className="w-full py-4 bg-primary-600 hover:bg-primary-700 border-none rounded-2xl font-bold text-lg"
+                  label="Apply Now" 
+                  className="w-full py-6 bg-primary-600 hover:bg-primary-700 border-none rounded-2xl font-black text-xl shadow-xl shadow-primary-600/30"
                   onClick={() => user ? setShowApplyDialog(true) : navigate('/login')}
                 />
                 <Button 
-                  label={isBookmarked ? 'Saved to Bookmarks' : 'Save this Job'} 
-                  icon={<Bookmark className={`w-4 h-4 mr-2 ${isBookmarked ? 'fill-white' : ''}`} />}
-                  className={`w-full py-4 rounded-2xl font-bold ${isBookmarked ? 'bg-slate-900 text-white' : 'p-button-outlined border-slate-200 text-slate-700'}`}
+                  label={isBookmarked ? 'Job Saved' : 'Save for Later'} 
+                  icon={<Bookmark className={`w-5 h-5 mr-3 ${isBookmarked ? 'fill-white' : ''}`} />}
+                  className={`w-full py-6 rounded-2xl font-black text-lg transition-all ${isBookmarked ? 'bg-white/10 text-white border-white/10' : 'p-button-text text-white hover:bg-white/5'}`}
                   onClick={toggleBookmark}
                 />
               </div>
 
-              <div className="pt-6 space-y-4">
-                <h4 className="font-bold text-slate-900 flex items-center"><Briefcase className="w-4 h-4 mr-2 text-primary-500" /> Requirements</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start text-sm text-slate-600">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 mr-3 shrink-0"></div>
-                    At least 2-3 years of relevant experience
-                  </li>
-                  <li className="flex items-start text-sm text-slate-600">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 mr-3 shrink-0"></div>
-                    Bachelor's degree in related field
-                  </li>
-                  <li className="flex items-start text-sm text-slate-600">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 mr-3 shrink-0"></div>
-                    Strong communication skills
-                  </li>
-                </ul>
+              <div className="pt-6 space-y-6">
+                <h4 className="text-sm font-black uppercase tracking-[0.2em] text-primary-400 flex items-center">
+                   <Briefcase className="w-4 h-4 mr-3" /> 
+                   Quick Stats
+                </h4>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-slate-400 font-bold">Applicants</span>
+                    <span className="font-black">124 People</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-slate-400 font-bold">Industry</span>
+                    <span className="font-black text-primary-400">{job.category_name}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-slate-400 font-bold">Work Mode</span>
+                    <span className="font-black">Hybrid / Remote</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -243,45 +248,54 @@ const JobDetail = () => {
       {/* Apply Dialog */}
       <Dialog 
         header={
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary-50 rounded-lg"><FileText className="w-6 h-6 text-primary-600" /></div>
-            <h3 className="text-xl font-bold">Complete Your Application</h3>
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center"><FileText className="w-7 h-7 text-primary-600" /></div>
+            <div>
+               <h3 className="text-2xl font-black text-slate-900 tracking-tight">Apply for Role</h3>
+               <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">{job.title}</p>
+            </div>
           </div>
         }
         visible={showApplyDialog} 
         onHide={() => setShowApplyDialog(false)}
-        className="w-full max-w-lg mx-4"
-        rounded
+        className="w-full max-w-xl mx-4"
       >
-        <div className="space-y-6 pt-2">
-          <p className="text-slate-500">You are applying for <span className="text-slate-900 font-bold">{job.title}</span> at <span className="text-slate-900 font-bold">{job.company_name}</span>.</p>
+        <div className="space-y-10 py-6">
+          <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
+             <p className="text-slate-600 leading-relaxed font-medium">
+               You are about to submit your profile to <span className="text-slate-900 font-black">{job.company_name}</span>. 
+               Please ensure your resume is up to date for the best chance of success.
+             </p>
+          </div>
           
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-slate-700">Select Resume / Document</label>
+          <div className="space-y-4">
+            <label className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Select Your Resume</label>
             <Dropdown
               value={selectedDoc}
               options={documents}
               onChange={(e) => setSelectedDoc(e.value)}
-              placeholder="Choose a document..."
-              className="w-full"
+              placeholder="Select from your documents..."
+              className="w-full bg-white border-slate-100 rounded-2xl p-2"
               emptyMessage={
-                <div className="p-2 text-center">
-                  <p className="mb-2">No documents found.</p>
-                  <Link to="/profile" className="text-primary-600 font-bold">Upload one in your profile</Link>
+                <div className="p-6 text-center">
+                  <p className="mb-4 text-slate-400 font-bold">No resumes found in your profile.</p>
+                  <Link to="/profile" className="text-primary-600 font-black hover:underline uppercase tracking-widest text-xs">Upload Document →</Link>
                 </div>
               }
             />
           </div>
 
           {applyError && (
-            <Message severity="error" text={applyError} className="w-full" />
+            <div className="p-4 bg-red-50 text-red-600 rounded-xl font-bold text-sm border border-red-100">
+               {applyError}
+            </div>
           )}
 
-          <div className="flex gap-3 pt-4">
-            <Button label="Cancel" className="flex-1 p-button-text text-slate-500" onClick={() => setShowApplyDialog(false)} />
+          <div className="flex flex-col md:flex-row gap-4 pt-4">
+            <Button label="Go Back" className="flex-1 p-button-text text-slate-400 font-black order-2 md:order-1" onClick={() => setShowApplyDialog(false)} />
             <Button 
-              label={applying ? "Submitting..." : "Submit Application"} 
-              className="flex-2 px-8 bg-primary-600 border-none rounded-xl font-bold" 
+              label={applying ? "Sending..." : "Submit Application"} 
+              className="flex-1 py-5 bg-slate-900 hover:bg-primary-600 text-white rounded-2xl font-black text-lg shadow-xl shadow-slate-900/20 order-1 md:order-2" 
               onClick={handleApply}
               disabled={applying}
             />
