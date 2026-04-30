@@ -58,4 +58,4 @@ npm run dev
 ```
 
 ## 📝 Lisensi
-Proyek ini dibuat untuk tujuan pembelajaran dan submisi tugas.
+Proyek ini dibuat untuk tujuan pembelajaran dan submisi tugas jangan lasung mengumpul file ini karena akan terkena plagiarisme, jadikan sebagai pembelajaran untuk project anda.
