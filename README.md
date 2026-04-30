@@ -40,7 +40,7 @@ cd openjob_api
 npm install
 # Salin .env.example ke .env dan sesuaikan konfigurasinya
 npm run migrate up
-npm run dev
+npm run start
 ```
 
 ### 2. Setup Consumer
